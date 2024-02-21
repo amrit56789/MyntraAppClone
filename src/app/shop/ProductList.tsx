@@ -27,8 +27,9 @@ const Product = (product: any) => {
 
   const handleClick = (e: any) => {
     setAdded(true);
-    dispatch(addPrice(product.p.price));
-    dispatch(addToBag(product.p));
+    const payload = product.product
+    dispatch(addPrice(product.product.price));
+    dispatch(addToBag(payload));
   };
   return (
     <>
@@ -44,7 +45,7 @@ const Product = (product: any) => {
               product?.product?.image || <Skeleton count={1} baseColor="#074a66" />
             }
             alt="i"
-            className=" my-4 rounded-xl object-cover  object-custom-pos"
+            className="my-4 rounded-xl object-cover  object-custom-pos"
           />
           {hovered && (
             <div className="absolute rounded-xl inset-0 flex items-center justify-center bg-black bg-opacity-50">
@@ -87,7 +88,7 @@ const Product = (product: any) => {
             </span>
           </div>
           <div className="text-gray-900 font-semibold mt-2">
-            {product.product.price}
+            {product?.product?.price}
           </div>
         </div>
       </div>

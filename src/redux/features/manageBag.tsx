@@ -6,7 +6,7 @@ type BagState = {
 };
 
 const initialState = {
-  bag: [{}],
+  bag: [],
   totalAmount: 0,
 } as BagState;
 
