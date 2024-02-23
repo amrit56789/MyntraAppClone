@@ -12,8 +12,8 @@ export default function SearchList(data:any) {
   const dispatch = useDispatch();
 
   const addItem = (item:any) => {
-    dispatch(addPrice(item.price));
-    dispatch(addToBag(item));
+    // dispatch(addPrice(item.price));
+    // dispatch(addToBag(item));
   };
   
   return (

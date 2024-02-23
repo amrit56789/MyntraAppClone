@@ -6,51 +6,33 @@ import ProductList from "./ProductList";
 import { Footer } from "../components/HomePage/Footer/Footer";
 import products from "../components/data/data";
 
-export default function page() {
+export default function Page() {
   return (
     <div>
-     
-
-      <div className="mt-32 flex">
-        {/* heading of filt */}
-        <h1 className="font-bold p-2 mr-32 ml-3 mb-1">FILTERS</h1>
-        {/* brief info for products */}
-        <div className="flex">
-          <div className="flex flex-row sm:mr-56 sm:ml-5">
-            <h2 className="font-light py-2 px-4 flex text-sm">
-              Bundles
-              <div className="mt-1 px-1 mx-1 ">
-                <AiOutlineArrowDown />
-              </div>
-            </h2>
-            <h2 className="font-light py-2 px-4 flex text-sm">
-              Country of Origin
-              <div className="mt-1 px-1 mx-1 ">
-                <AiOutlineArrowDown />
-              </div>
-            </h2>
-            <h2 className="font-light py-2 px-4 flex text-sm">
-              Size
-              <div className="mt-1 px-1 mx-1 ">
-                <AiOutlineArrowDown />
-              </div>{" "}
-            </h2>
-          </div>
-
-          <div>
-            <button className="flex sm:ml-64 border-2 border-slate-100 px-4 py-1 space-x-8">
+      <Navbar />
+      <main className="mt-32">
+        <section className="flex justify-between items-center mx-3 mb-1">
+          <h1 className="font-bold p-2">FILTERS</h1>
+          <div className="flex flex-wrap">
+            <div className="flex flex-row space-x-4">
+              {["Bundles", "Country of Origin", "Size"].map((item) => (
+                <h2 key={item} className="font-light py-2 px-4 flex text-sm items-center">
+                  {item}
+                  <AiOutlineArrowDown className="ml-1" />
+                </h2>
+              ))}
+            </div>
+            <button type="button" className="flex items-center border-2 border-slate-100 px-4 py-1 space-x-8 ml-auto">
               <h3 className="font-light text-sm">Sort by:</h3>
-              <h4 className="font-bolder text-sm">Recommended</h4>
+              <h4 className="font-bold text-sm">Recommended</h4>
             </button>
           </div>
-        </div>
-      </div>
-
-      <div className="flex">
-        <Filters />
-        <ProductList data={products} />
-      </div>
-
+        </section>
+        <section className="flex">
+          <Filters />
+          <ProductList data={products} />
+        </section>
+      </main>
       <Footer />
     </div>
   );

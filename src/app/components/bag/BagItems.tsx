@@ -6,21 +6,21 @@ import { AiFillDelete } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 
 interface Item {
-  imageUrl: string;
+  id: string;
+  image: string;
   name: string;
   price: number;
 }
+
 
 function BagItems() {
   const items = useAppSelector((state) => state.reducers.bag);
   const dispatch = useDispatch();
   const removePriceAndBag = (item: Item) => {
-
     if (Object.keys(item).length === 0) {
       return;
     }
-    dispatch(removeFromBag(item));
-
+    dispatch(removeFromBag(item.id));
     dispatch(removePrice(item.price));
   };
 
@@ -32,18 +32,18 @@ function BagItems() {
           {item.length && (
             <div className="flex items-center  w-64 flex-none">
               <img
-                src={`${item[1].imageUrl}`}
-                alt=""
-                className="w-16 h-16 object-cover"
+                src={item.image}
+                alt="image"
+                className="object-cover"
               />
               <div className="ml-4 flex-none">
-                <p className="font-bold text-lg">{item[1].name}</p>
-                <p className="text-gray-500">${item[1].price}</p>
+                {/* <p className="font-bold text-lg">{item.name.en}</p> */}
+                <p className="text-gray-500">${item.price}</p>
               </div>
               <div className="ml-36">
                 <button
                   type="button"
-                  onClick={() => removePriceAndBag(item[1])}
+                  onClick={() => removePriceAndBag(item)}
                   className="text-white bg-red-700 hover:bg-red-800 focus:outline-none text-xl
               focus:ring-4 focus:ring-red-300 font-medium rounded-full  px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600
                dark:hover:bg-red-700 dark:focus:ring-red-900"
