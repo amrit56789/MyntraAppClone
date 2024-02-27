@@ -10,7 +10,7 @@ export default function LogoAndMenuItems() {
       <Image
         src={myntraLogo}
         alt="" 
-        width={100}
+        width={70}
         className="md:h-9 max-sm:h-8 max-sm:mr-1 md:mx-5"
         objectFit="contain"
       />
