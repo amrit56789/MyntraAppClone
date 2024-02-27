@@ -7,31 +7,36 @@ import Image from "next/image";
 const rakshabandhanList = [
   {
     id: new Date(),
-    image: "https://i.pinimg.com/originals/02/84/c7/0284c7b61010c95f91f65f44a907e97f.jpg",
+    image:"",
+    // image: "https://i.pinimg.com/originals/02/84/c7/0284c7b61010c95f91f65f44a907e97f.jpg",
     title: "Ethnic Wear Collections",
     description: "For an always cool outlook"
   },
   {
     id: new Date(),
-    image: "https://looksgud.com/blog/wp-content/uploads/2019/09/fabindia-kurta.jpg",
+    image:"",
+    // image: "https://looksgud.com/blog/wp-content/uploads/2019/09/fabindia-kurta.jpg",
     title: "Ethnic Casuals",
     description: "Indians surely know the route to comfort"
   },
   {
     id: new Date(),
-    image: "https://www.stylesnic.com/wp-content/uploads/2020/04/White-Elegant-Kurtas-For-Men.jpg",
+    image:"",
+    // image: "https://www.stylesnic.com/wp-content/uploads/2020/04/White-Elegant-Kurtas-For-Men.jpg",
     title: "All White Indian Wear",
     description: "For an always cool outlook"
   },
   {
     id: new Date(),
-    image: "https://4.bp.blogspot.com/-JhTIj-C3uRA/Vx9uqPdez5I/AAAAAAAAARM/0Bgvut-ydvsr2e860cHgwgAIpQpPVSWrACLcB/s1600/Gul-Ahmad-Men-Kurta-Slwar-Suite-Designs-2016-17-3.jpg",
+    image:"",
+    // image: "https://4.bp.blogspot.com/-JhTIj-C3uRA/Vx9uqPdez5I/AAAAAAAAARM/0Bgvut-ydvsr2e860cHgwgAIpQpPVSWrACLcB/s1600/Gul-Ahmad-Men-Kurta-Slwar-Suite-Designs-2016-17-3.jpg",
     title: "Ethnic Casuals",
     description: "Indians surely know the route to comfort"
   },
   {
     id: new Date(),
-    image: "https://astyletips.com/wp-content/uploads/2015/12/Best-Kurtas-for-Men-by-Bonanza-2.jpg",
+    image:"",
+    // image: "https://astyletips.com/wp-content/uploads/2015/12/Best-Kurtas-for-Men-by-Bonanza-2.jpg",
     title: "Ethnic Casuals",
     description: "Indians surely know the route to comfort"
   }
@@ -72,7 +77,7 @@ function AdsSlider() {
           rakshabandhanList.map((item) => {
             return (
               <div className="flex flex-col m-4">
-                <img src={item.image} className="h-80 w-72 object-cover object-custom-pos" />
+                <Image src={item.image} width={200} height={100} className="h-80 w-72 object-cover object-custom-pos" alt="item.title" />
                 <div className="flex flex-col">
                   <h2 className="font-bold text-xl mt-2 mb-1 font-serif	">{item.title}</h2>
                   <span className="text-sm">{item.description}</span>

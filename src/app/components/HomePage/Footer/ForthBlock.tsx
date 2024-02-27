@@ -1,20 +1,22 @@
 import React from "react";
-
+import Image from "next/image";
+import original from "../../../../images/logos/original.jpg"
+import returnImg from "../../../../images/logos/returnImg.png"
 export default function ForthBlock() {
   return (
     <div className="pl-14 max-sm:hidden ">
       <div className="text-md flex">
-        <img src="https://tse3.mm.bing.net/th?id=OIP.6JOEyltNxsE4uL23t3pX2AHaFr&pid=Api&P=0&h=180" className="h-14 mr-2" />
+        <Image src={original} alt="Original guarantee" className="h-14 mr-2" />
         <div className="">
           100% ORIGINAL guarantee for all products at
           myntra.com
         </div>
       </div>
       <div className="text-md flex my-6 ">
-        <img
+        <Image
           className="h-14 mr-2 "
-          src="https://assets.myntassets.com/assets/images/retaillabs/2023/5/22/becb1b16-86cc-4e78-bdc7-7801c17947831684737106127-Return-Window-image.png"
-          alt=""
+          src={returnImg}
+          alt="Return policy"
         />
         <div>
           Return within 14 days of receiving your order

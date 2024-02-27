@@ -3,6 +3,7 @@ import { nanoid } from "nanoid";
 import AddToBagButton from "./AddToBag";
 import { useDispatch } from "react-redux";
 import { addToBag, addPrice } from "@/redux/features/manageBag";
+import Image from "next/image";
 
 
 export default function SearchList(data:any) {
@@ -12,8 +13,8 @@ export default function SearchList(data:any) {
   const dispatch = useDispatch();
 
   const addItem = (item:any) => {
-    // dispatch(addPrice(item.price));
-    // dispatch(addToBag(item));
+    dispatch(addPrice(item.price));
+    dispatch(addToBag(item));
   };
   
   return (
@@ -22,7 +23,7 @@ export default function SearchList(data:any) {
           Object.entries(data.data).map((item:any)=>
           <div key={item[0]}>
              <div className="flex rounded-md items-center mb-4 border-2 hover:shadow-xl " >
-                <img
+                <Image
                   src={item[1].imageUrl}
                   alt={item[1].name}
                   className="w-12 h-12 px-2 rounded-full mr-4"
