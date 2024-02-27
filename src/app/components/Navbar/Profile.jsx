@@ -1,11 +1,12 @@
 import { Menu, MenuHandler, MenuList, MenuItem, Typography } from "@material-tailwind/react";
+import Image from "next/image";
 import { MdPerson, MdEdit, MdInbox, MdHelp, MdExitToApp } from 'react-icons/md';
 
 export default function Profile() {
   return (
     <Menu>
       <MenuHandler>
-        <img
+        <Image
           src="https://images.pexels.com/photos/1310522/pexels-photo-1310522.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="tania andrew"
           className="cursor-pointer rounded-full w-8 h-8"

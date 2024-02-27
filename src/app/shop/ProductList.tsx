@@ -39,7 +39,7 @@ const Product = (product: any) => {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <img
+          <Image
             width={320}
             src={
               product?.product?.image || <Skeleton count={1} baseColor="#074a66" />
