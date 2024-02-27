@@ -9,10 +9,10 @@ export default function LogoAndMenuItems() {
     <Link href={"/"}>
       <Image
         src={myntraLogo}
-        alt=""
+        alt="" 
         width={100}
-        height={200}
         className="md:h-9 max-sm:h-8 max-sm:mr-1 md:mx-5"
+        objectFit="contain"
       />
     </Link>
     <ul className="flex md:space-x-6 max-sm:space-x-2">
@@ -42,7 +42,7 @@ export default function LogoAndMenuItems() {
       </li>
       <li>
         <Link
-          href={"/shop"}
+          href={"/HomeLiving"}
           className="font-semibold max-sm:text-xs text-sm"
         >
           HOME & LIVING

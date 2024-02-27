@@ -6,58 +6,54 @@ import { AiFillDelete } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import Image from "next/image";
 
-interface Item {
-  imageUrl: string;
-  name: string;
+interface BagItem {
+  id: string;
+  name: { en: string };
   price: number;
+  image: string;
 }
 
 function BagItems() {
   const items = useAppSelector((state) => state.reducers.bag);
   const dispatch = useDispatch();
-  const removePriceAndBag = (item: Item) => {
 
+  const removePriceAndBag = (item: BagItem) => {
     if (Object.keys(item).length === 0) {
       return;
     }
-    // dispatch(removeFromBag(item));
-
+    dispatch(removeFromBag(item.id));
     dispatch(removePrice(item.price));
   };
 
-
   return (
     <div className="bg-white border rounded-lg shadow-md overflow-scroll h-72 p-4 mb-4">
-      {Object.entries(items).map((item: any) => (
-        <div className="flex justify-between items-center my-4" key={item[0]}>
-          {item.length && (
-            <div className="flex items-center  w-64 flex-none">
+      {Object.entries(items).map(([id, item]) => (
+        <div className="" key={id}>
+          {item && (
+            <div className="flex items-center justify-between flex-none rounded-md">
               <Image
-                src={`${item[1].imageUrl}`}
-                alt=""
-                className="w-16 h-16 object-cover"
+                src={item.image}
+                alt="item image"
+                width={10}
+                height={10}
+                layout="responsive"
+                className="rounded-md w-11"
               />
-              <div className="ml-4 flex-none">
-                <p className="font-bold text-lg">{item[1].name}</p>
-                <p className="text-gray-500">${item[1].price}</p>
+              <div className="flex flex-col justify-center mx-4"> {/* Center content vertically */}
+                <p className="font-bold text-lg">{item?.name?.en}</p>
+                <p className="text-gray-500">${item.price}</p>
               </div>
-              <div className="ml-36">
-                <button
-                  type="button"
-                  onClick={() => removePriceAndBag(item[1])}
-                  className="text-white bg-red-700 hover:bg-red-800 focus:outline-none text-xl
-              focus:ring-4 focus:ring-red-300 font-medium rounded-full  px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600
-               dark:hover:bg-red-700 dark:focus:ring-red-900"
-                >
-                  <AiFillDelete></AiFillDelete>
-                </button>
+              <div className="flex items-center justify-center"> {/* Center delete button */}
+                <AiFillDelete className="text-4xl cursor-pointer text-red-500" onClick={() => removePriceAndBag(item)} />
               </div>
             </div>
           )}
         </div>
+
       ))}
     </div>
   );
 }
+
 
 export default BagItems;

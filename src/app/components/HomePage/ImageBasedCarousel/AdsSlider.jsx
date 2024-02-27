@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -40,54 +41,62 @@ const rakshabandhanList = [
     title: "Ethnic Casuals",
     description: "Indians surely know the route to comfort"
   }
-]
+].map(item => ({ ...item, id: uuidv4() }));
 
 function AdsSlider() {
 
-  const [slidesToShow, setSlidesToShow] = useState(4);
-  const [slidesToScroll, setSlidesToScroll] = useState(1);
+  const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
-    const updateWindowDimensions = () => {
-      setSlidesToShow(window.innerWidth < 768 ? 4 : 5)
-      setSlidesToScroll(window.innerWidth < 768 ? 1 : 1)
-    };
-    updateWindowDimensions();
-    window.addEventListener('resize', updateWindowDimensions);
-    return () => {
-      window.removeEventListener('resize', updateWindowDimensions);
-    };
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Initial check
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
+
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: slidesToShow,
-    slidesToScroll: slidesToScroll
+    slidesToShow: windowWidth < 768 ? 1 : 4, 
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
   return (
-    <div className=" indent-1 max-sm:w-11/12 ">
-      <h1 className="uppercase text-zinc-700
-       mt-12 	sm:mt-16 sm:ml-7
-       sm:text-3xl text-xl mb-10 tracking-widest font-bold ">
-        RAKSHABANNDHAN GIFTS THIS WAY
+    <div className="w-11/12 mx-auto">
+      <h1 className="uppercase text-zinc-700 mt-12 sm:mt-16 sm:text-3xl text-xl mb-10 tracking-widest font-bold">
+        Rakshabandhan Gifts This Way
       </h1>
-      <div className="flex mx-24">
-        {
-          rakshabandhanList.map((item, index) => {
-            return (
-              <div className="flex flex-col m-4" key={index}>
-                <Image src={item.image} width={200} height={100} className="h-80 w-72 object-cover object-custom-pos" alt="item.title" />
-                <div className="flex flex-col">
-                  <h2 className="font-bold text-xl mt-2 mb-1 font-serif	">{item.title}</h2>
-                  <span className="text-sm">{item.description}</span>
-                </div>
-
-              </div>
-            )
-          })
-        }
-      </div>
+      <Slider {...settings}>
+        {rakshabandhanList.map((item) => (
+          <div className="p-4" key={item.id}>
+            <Image src={item.image || '/default-placeholder.png'} width={200} height={100} alt={item.title} className="object-cover" />
+            <div>
+              <h2 className="font-bold text-xl mt-2 mb-1">{item.title}</h2>
+              <span className="text-sm">{item.description}</span>
+            </div>
+          </div>
+        ))}
+      </Slider>
     </div>
   );
 }

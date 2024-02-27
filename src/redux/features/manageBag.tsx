@@ -12,7 +12,7 @@ interface BagState {
 }
 
 const initialState: BagState = {
-  bag: [], 
+  bag: [],
   totalAmount: 0,
 };
 

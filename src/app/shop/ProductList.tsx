@@ -11,6 +11,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const Product = (product: any) => {
+  
   const [hovered, setHovered] = useState(false);
   const [added, setAdded] = useState(false);
   const [item, setItem] = useState({});
