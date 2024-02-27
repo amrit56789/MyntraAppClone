@@ -1,14 +1,17 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import myntraLogo from "../../../images/social-icon/myntraLogo.png"
 
 export default function LogoAndMenuItems() {
   return (
     <div className="flex items-center ">
     <Link href={"/"}>
       <Image
-        src="https://ww1.freelogovectors.net/wp-content/uploads/2023/01/myntra-logo-freelogovectors.net_.png"
+        src={myntraLogo}
         alt=""
+        width={100}
+        height={200}
         className="md:h-9 max-sm:h-8 max-sm:mr-1 md:mx-5"
       />
     </Link>

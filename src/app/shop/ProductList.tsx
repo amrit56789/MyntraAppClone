@@ -41,6 +41,7 @@ const Product = (product: any) => {
         >
           <Image
             width={320}
+            height={100}
             src={
               product?.product?.image || <Skeleton count={1} baseColor="#074a66" />
             }

@@ -6,7 +6,7 @@ export default function ForthBlock() {
   return (
     <div className="pl-14 max-sm:hidden ">
       <div className="text-md flex">
-        <Image src={original} alt="Original guarantee" className="h-14 mr-2" />
+        <Image src={original} alt="Original guarantee" className="h-10 mr-2 w-14" />
         <div className="">
           100% ORIGINAL guarantee for all products at
           myntra.com
@@ -14,7 +14,7 @@ export default function ForthBlock() {
       </div>
       <div className="text-md flex my-6 ">
         <Image
-          className="h-14 mr-2 "
+          className="h-10 w-14 mr-2 "
           src={returnImg}
           alt="Return policy"
         />
